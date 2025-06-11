@@ -1,0 +1,102 @@
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+  background-size: 400% 400%; /* Makes the gradient large enough to animate */
+  animation: gradientMove 15s ease infinite;
+  text-align: center;
+  padding: 30px;
+  overflow-x: hidden;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #333;
+  text-shadow: 1px 1px 3px #fff;
+}
+
+#gameBoard {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cell {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(to bottom right, #b084cc, #d9a7eb); /* Lighter purple */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  font-size: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: black; /* <-- Changed from white to black */
+  text-shadow: none; /* Optional: remove white glow for better black clarity */
+  position: relative;
+}
+
+.cell::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 20%, transparent 80%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cell.winning {
+  background: linear-gradient(to bottom right, #e0bbff, #f3d1ff); /* Light purple win */
+  box-shadow: 0 0 15px 5px #fff;
+}
+
+#status {
+  font-size: 1.2em;
+  margin: 20px;
+  color: #222;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  background: #ff6f61;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #ff3b2e;
+}
+
+.scoreboard {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
